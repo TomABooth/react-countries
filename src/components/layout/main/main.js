@@ -7,8 +7,6 @@ export default function Main() {
   const { countries } = useCountries();
   return (
     <main>
-      <select></select>
-
       {countries.map((country) => {
         return <CountryCard key={country.id} {...country} />;
       })}
