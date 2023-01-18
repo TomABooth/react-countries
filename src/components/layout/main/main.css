@@ -1,0 +1,11 @@
+main {
+  display: flex;
+  background-color: white;
+  height: 90vh;
+  flex-wrap: wrap;
+  padding: 5vh;
+}
+
+.country-card {
+  margin: 5px;
+}
