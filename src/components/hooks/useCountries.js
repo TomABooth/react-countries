@@ -3,14 +3,24 @@ import { fetchCountries } from '../../services/countries';
 
 export function useCountries() {
   const [countries, setCountries] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchCountries();
-      setCountries(data);
+      try {
+        const data = await fetchCountries();
+        data.map((country) => {
+          if (!country.continent) {
+            country.continent = 'none';
+          }
+        });
+        setCountries(data);
+      } catch (e) {
+        setError('something went wrong');
+      }
     }
     fetchData();
   }, []);
 
-  return { countries };
+  return { countries, error };
 }
